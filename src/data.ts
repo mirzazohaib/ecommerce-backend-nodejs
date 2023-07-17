@@ -1,4 +1,6 @@
-import { Product } from './types/Product'
+import bcrypt from 'bcryptjs'
+import { Product } from './models/productModel'
+import { User } from './models/userModel'
 
 export const sampleProducts: Product[] = [
   {
@@ -8,8 +10,6 @@ export const sampleProducts: Product[] = [
     category: 'Shirts',
     brand: 'Nike',
     price: 100,
-    size: 'M',
-    variant: 'Black',
     countInStock: 0,
     description: 'high quality shirt',
     rating: 4.5,
@@ -22,8 +22,6 @@ export const sampleProducts: Product[] = [
     category: 'Shirts',
     brand: 'Zara',
     price: 150,
-    size: 'S',
-    variant: 'White',
     countInStock: 23,
     description: 'high quality shirt',
     rating: 3.5,
@@ -36,8 +34,6 @@ export const sampleProducts: Product[] = [
     category: 'Shirts',
     brand: 'Zara',
     price: 170,
-    size: 'M',
-    variant: 'Black',
     countInStock: 23,
     description: 'high quality shirt',
     rating: 3.5,
@@ -50,8 +46,6 @@ export const sampleProducts: Product[] = [
     category: 'Pants',
     brand: 'Zara',
     price: 220,
-    size: 'M',
-    variant: 'Black',
     countInStock: 13,
     description: 'high quality pants',
     rating: 4.0,
@@ -64,11 +58,24 @@ export const sampleProducts: Product[] = [
     category: 'Jeans',
     brand: 'Diesel',
     price: 270,
-    size: 'L',
-    variant: 'Blue',
     countInStock: 50,
     description: 'Slim-fitting style',
     rating: 4.9,
     numReviews: 45,
+  },
+]
+
+export const sampleUsers: User[] = [
+  {
+    name: 'Joe',
+    email: 'admin@example.com',
+    password: bcrypt.hashSync('123456'),
+    isAdmin: true,
+  },
+  {
+    name: 'John',
+    email: 'user@example.com',
+    password: bcrypt.hashSync('123456'),
+    isAdmin: false,
   },
 ]

@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import { productRouter } from './routers/productRouter'
 import { seedRouter } from './routers/seedRouter'
 import express from 'express'
+import { userRouter } from './routers/userRouter'
 
 dotenv.config()
 
@@ -22,12 +23,16 @@ const app = express()
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:5173'],
+    origin: '*',
   })
 )
 
-app.use('/api/v1/products', productRouter)
-app.use('/api/v1/seed', seedRouter)
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.use('/api/products', productRouter)
+app.use('/api/users', userRouter)
+app.use('/api/seed', seedRouter)
 
 const PORT = 4000
 app.listen(PORT, () => {

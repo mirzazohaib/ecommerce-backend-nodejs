@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
 import { Product } from '../models/productModel'
 import { isAuth } from '../utils'
-import { OrderModel, Order } from '../models/OrderModel'
+import { OrderModel, Order } from '../models/orderModel'
 
 export const orderRouter = express.Router()
 
@@ -71,7 +71,7 @@ orderRouter.put(
       }
       const updatedOrder = await order.save()
 
-      res.send({ order: updatedOrder, message: 'Order Paid Successfully' })
+      res.json({ order: updatedOrder, message: 'Order Paid Successfully' })
     } else {
       res.status(404).json({ message: 'Order Not Found' })
     }
